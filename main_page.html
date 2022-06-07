@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐厅管理系统</title>
+    <link rel="stylesheet" href="../RestaurantSystem/css/mian_page.css">
+    <link rel="stylesheet" href="../RestaurantSystem/icon-font/iconfont.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="../RestaurantSystem/js/main_page.js"></script>
+    <script src="../RestaurantSystem/js/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+    <!-- 添加食物的盒子与修改食物信息同用一个 -->
+    <div class="add_Food" style="z-index: 10;">
+        <div class="add_Food_box">
+            <input type="text" placeholder="菜名" id="food_name" autocomplete="off">
+            <input type="text" placeholder="价格" id="food_price" autocomplete="off">
+            <input type="text" placeholder="描述" id="food_typename" autocomplete="off">
+            <input type="text" placeholder="类型名称" id="food_Revise_typename" autocomplete="off">
+            <div class="Single_box_food">
+                食物类型:<select name="" id="food_typeid">
+                    <option value="0">面</option>
+                    <option value="1">米</option>
+                    <option value="2">饮品</option>
+                    <option value="3">水果</option>
+                </select>
+            </div>
+            <input type="text" id="_id" placeholder="菜品id" autocomplete="off">
+            <div class="add_Food_buttons">
+                <button id="add_Food_button_Determine">确定</button>
+                <button id="add_food_button_Revise">确定</button>
+                <button id="add_Food_button_Cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- 添加和修改订单的盒子 -->
+    <div class="add_order" style="z-index: 10;display: none;">
+        <div class="add_Order_box">
+            <input type="text" id="order_us" placeholder="请输入您自己的用户名" autocomplete="off">
+            <input type="text" id="order_amount" placeholder="请输入订单金额" autocomplete="off">
+            <input type="text" id="order_phone" placeholder="请输入手机号" autocomplete="off">
+            <input type="text" id="order_id" placeholder="_id值" autocomplete="off">
+            <div class="Payment_status">
+                支付状态:<select id="order_pay">
+                    <option value="0">未支付</option>
+                    <option value="1">已支付</option>
+                </select>
+            </div>
+            <div class="order_buttons">
+                <!-- 添加得确定按钮 -->
+                <button id="order_button_Determine">确定</button>
+                <!-- 修改确定按钮 -->
+                <button id="order_button_Revise">确定</button>
+                <button id="search_orthers_order_Determine">确定</button>
+                <button id="order_button_Cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- 超级管理员修改其他用户的的信息框 -->
+    <div class="revise_us_All" style="z-index: 10;display: none;">
+        <div class="revise_us_All_box">
+            <input type="text" id="r_id" placeholder="请输入要改变的id值" autocomplete="off">
+            <input type="text" id="r_us" placeholder="请输入要改变的us" autocomplete="off">
+            <input type="text" id="r_age" placeholder="请输入要改变的年龄" autocomplete="off">
+            <!-- <input type="text" id="r_us_All_sex"> -->
+            <div class="r_sex">
+                请选择性别:<select id="r_sex">
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select>
+            </div>
+            <div class="r_buttons">
+                <button id="r_Determine">确定</button>
+                <button id="r-Cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+<!-- 左侧导航栏 -->
+    <div class="Centered">
+        <div class="left_menu">
+            <div class="top_avatar_frame">
+                <!-- 头像，退出 -->
+                <div class="top_Avatar">
+                    <img src="../RestaurantSystem/img/27.png" style="width: 86%;" id="Avatar">
+                </div>
+                <div class="top_operation_box">
+                    <div class="user_name">123</div>
+                    <span><span></span>在线</span>
+                    <button id="exit_button"><i class="iconfont"
+                            style="font-weight: bold;color: #ED5565;">&#xe65a;</i>退出</button>
+                </div>
+            </div>
+            <div class="menu_body">
+                <!-- 包含菜品的查询，修改，添加，删除 -->
+                <span class="menu_bar_selection_style"><i class="iconfont" style="font-weight: bold;">&#xe610;</i>菜品中心</span>
+                <!-- 包含订单的查询，修改，删除，添加，查询总数量 -->
+                <span><i class="iconfont">&#xe60b;</i>订单中心</span>
+                <!-- 包含信息的查看，修改 ，查看用户总数，搜索用户-->
+                <span><i class="iconfont">&#xe65f;</i>用户中心</span>
+                <span><i class="iconfont">&#xe889;</i>新增物品</span>
+                <span><i class="iconfont">&#xe651;</i>搜索其他用户订单</span>
+                <!-- <span><i class="fa fa-clone"></i>分页查询</span> -->
+                <span>超级管理员</span>
+            </div>
+        </div>
+
+
+<!-- 菜品中心 -->
+        <div class="Right_content_area Right_content_area_three">
+            <div class="skills_box">
+                <div class="skills_search">
+                    <input type="text" id="search_food_name" placeholder="请输入要查询的食物内容" autocomplete="off">
+                    <button id="food_search_button"><i class="iconfont" style="color: white;">&#xe651;</i></button>
+                </div>
+                <!-- 存放功能按钮的盒子 -->
+                <div class="skills_buttons">
+                    <button id="food_add_button"><i class="iconfont">&#xe889;</i>新增</button>
+                    <button id="reset_button"><i class="iconfont">&#xe648;</i>重置</button>
+                </div>
+            </div>
+
+
+            <div class="food_search_results">
+                <ul style="background-color: #F8F8F9;">
+                    <li>菜名</li>
+                    <li>价格</li>
+                    <li>描述</li>
+                    <li>类型名称</li>
+                    <li>类型简写</li>
+                    <li style="display:inline-block;">操作框</li>
+                </ul>
+            </div>
+
+
+            <!-- 显示页数的盒子 -->
+            <div class="number_of_pages">
+                <button id="Food_previous_page">上一页</button>
+                <span id="Food_number_of_pages">1</span>
+                <div id="Food_number_of_pages_select">
+                    <select id="Food_pages_select">
+                        <option value="10" class="food_information_displayed">10条每页</option>
+                        <option value="15" class="food_information_displayed">15条每页</option>
+                        <option value="20" class="food_information_displayed">20条每页</option>
+                        <option value="25" class="food_information_displayed">25条每页</option>
+                    </select>
+                </div>
+                <button id="Food_next_page">下一页</button>
+            </div>
+        </div>
+
+
+<!-- 订单中心 -->
+        <div class="Right_content_area" style="display: none;">
+            <div class="skills_box">
+                <!-- <div class="skills_search">
+                    <input type="text" id="search_order_name" placeholder="请输入要查询的订单内容" autocomplete="off">
+                    <button id="order_search_button"><i class="iconfont" style="color: white;">&#xe651;</i></button>
+                </div> -->
+                <!-- 存放功能按钮的盒子 -->
+                <div class="skills_buttons">
+                    <button id="order_add_button"><i class="iconfont">&#xe889;</i>新增</button>
+                </div>
+            </div>
+            <div class="order_search_results">
+                <ul style="background-color: #F8F8F9;">
+                    <li>用户名</li>
+                    <li>订单金额</li>
+                    <li>客户手机号</li>
+                    <li>支付状态(0:未支付,1:已支付)</li>
+                    <li style="display:inline-block;">操作框</li>
+                </ul>
+            </div>
+        </div>
+
+
+<!-- 用户中心 -->
+        <div class="Right_content_area User_Center" style="display: none;">
+            <div class="User_Information_Bar">
+                <span>个人资料</span>
+                <div class="message_window">
+                    <div class="message_window_user">
+                        <span>用户名:</span>
+                        <span id="user_name"></span>
+                    </div>
+                    <div class="message_window_phone">
+                        <span>手机号:</span>
+                        <span id="user_phone"></span>
+                    </div>
+                    <div class="message_window_age">
+                        <span>年龄:</span>
+                        <span id="user_age"></span>
+                    </div>
+                    <div class="message_window_sex">
+                        <span>性别:</span>
+                        <span id="user_sex"></span>
+                    </div>
+                    <div class="message_window_id">
+                        <span>id:</span>
+                        <span id="user_id"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="User_Modify_information">
+                <input type="text" placeholder="用户名" id="Input_User_name" autocomplete="off">
+                <input type="text" placeholder="年龄" id="Input_User_age" autocomplete="off">
+                <input type="text" placeholder="手机号" id="Input_User_phone" autocomplete="off">
+                <div class="sex">
+                    性别:  <select id="User_sex">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="id" id="Input_id" autocomplete="off">
+                <button id="user_save_information">保存</button>
+            </div>
+        </div>
+
+<!-- 新添加的物品 -->
+        <div class="Right_content_area" style="display: none;">
+            <div class="food_add_results"></div>
+        </div>
+<!-- 搜索其他用户订单 -->
+        <div class="Right_content_area Right_content_area_three" style="display: none;">
+            <div class="skills_box">
+                <div class="skills_search">
+                    <input type="text" id="search_order_name" placeholder="请输入要查询的订单内容" autocomplete="off">
+                    <button id="order_search_button"><i class="iconfont" style="color: white;">&#xe651;</i></button>
+                </div>
+                <button id="order_reset_button"><i class="iconfont">&#xe648;</i>重置</button>
+            </div>
+            <div class="search_order_results">
+                <ul>
+                    <li>用户名</li>
+                    <li>订单金额</li>
+                    <li>客户手机号</li>
+                    <li>支付状态(0:未支付,1:已支付)</li>
+                    <li>操作框</li>
+                </ul>
+            </div>
+            <div class="number_of_pages">
+                <button id="Order_previous_page">上一页</button>
+                <span id="Order_number_of_pages">1</span>
+                <div id="Order_number_of_pages_select">
+                    <select id="Order_pages_select">
+                        <option value="10" class="Order_information_displayed">10条每页</option>
+                        <option value="15" class="Order_information_displayed">15条每页</option>
+                        <option value="20" class="Order_information_displayed">20条每页</option>
+                        <option value="25" class="Order_information_displayed">25条每页</option>
+                    </select>
+                </div>
+                <button id="Order_next_page">下一页</button>
+            </div>
+        </div>
+<!-- 超级管理员 -->
+        <div class="Right_content_area super_us" style="display: none;">
+            <div class="super_administrator">
+                <ul>
+                    <li>用户名</li>
+                    <li>年龄</li>
+                    <li>性别</li>
+                    <li>手机号</li>
+                    <li>操作框</li>
+                </ul>
+            </div>
+            <div class="number_of_pages">
+                <button id="Super_previous_page">上一页</button>
+                <span id="Super_number_of_pages">1</span>
+                <div id="Super_number_of_pages_select">
+                    <select id="Super_pages_select">
+                        <option value="10" class="Super_information_displayed">10条每页</option>
+                        <option value="15" class="Super_information_displayed">15条每页</option>
+                        <option value="20" class="Super_information_displayed">20条每页</option>
+                        <option value="25" class="Super_information_displayed">25条每页</option>
+                    </select>
+                </div>
+                <button id="Super_next_page">下一页</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,660 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    height: 30px;
+    line-height: 30px;
+}
+/* 居中的内容盒子 */
+.Centered{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 240px auto;
+}
+/* 设定左侧菜单栏样式 */
+.left_menu{
+    background-color: #0F2950;
+    display: grid;
+    color: #A3B1CC;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px auto;
+}
+/* 菜单顶部样式 */
+.top_avatar_frame{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr .3fr;
+    justify-items: center;
+    align-items: center;
+}
+.top_Avatar>img{
+    border-radius: 50%;
+}
+.top_operation_box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px 5px;
+}
+.user_name{
+    grid-column: span 2;
+}
+.top_operation_box>span>span{
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 3px;
+    border-radius: 50%;
+    background-color: #1C84C6;
+}
+#exit_button{
+    border: none;
+    background-color: #0F2950;
+    color: #A3B1CC;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 设置菜单的样式 */
+.menu_body{
+    display: grid;
+    cursor: pointer;
+    width: 100%;
+    grid-template-rows:repeat(4,1fr);
+    height: 340px;
+}
+.menu_body>span{
+    width: 100%;
+    height:70%;
+    text-align: center;
+    display: grid;
+    padding: 10px 0px;
+}
+.menu_bar_selection_style{
+    background-color: #1890FF;
+    color: white;
+}
+
+/* 点击左侧菜单的样式 */
+.menu_click_style{
+    background-color: #1890FF;
+    color: white;
+}
+
+/* 设定右侧样式 */
+.Right_content_area{
+    min-height: 600px;
+    background-color: #2d5899bb;
+    background-image: url(../img/908765.png);
+    background-size: cover;
+    display: grid;
+    grid-gap: 40px 0px;
+    grid-template-rows: 100px auto;
+    grid-template-columns: auto;
+    position: relative;
+}
+.Right_content_area_three{
+    grid-template-rows: 80px 3fr 40px;
+}
+.skills_box{
+    padding: 20px;
+    height: 40px;
+    width: 40%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0px 10px;
+}
+
+/* 设定功能框样式 */
+.skills_search{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+}
+.skills_search>input{
+    border: 1px solid #4662D9;
+    padding-left: 10px;
+    outline: none;
+    color: #BAB3BA;
+}
+.skills_search>button{
+    border: none;
+    background-color: #4662D9;
+}
+
+/* 设置功能按钮的父盒子样式 */
+.skills_buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0px 15px;
+}
+#food_add_button{
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: #1C84C6;
+}
+#reset_button{
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: #F8AC59;
+}
+#order_reset_button{
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: #F8AC59;
+}
+.food_search_results>ul{
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 1fr;
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: .8;
+    /* overflow: hidden; */
+}
+.food_search_results>ul>li{
+    border-bottom: 3px solid #DCDFE6;
+}
+/* 设置操作框里边的按钮样式 */
+.food_search_results>ul>li:nth-child(6){
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+/* 将显示id的框隐藏 */
+.food_search_results>ul>li:nth-child(7){
+    display: none;
+}
+.food_search_results>ul>li>button{
+    border: none;
+    background-color: #FFFFFF;
+    color: #46A6FF;
+}
+/* 设定鼠标移入样式 */
+.food_search_results>ul:hover{
+    /* li */
+    background-color: #F5F7FA;
+}
+.food_search_results>ul:hover>li:nth-child(6)>button{
+    background-color: #F5F7FA;
+}
+
+.food_search_results>ul>li>button:hover{
+    /* 按钮 */
+    color: red;
+}
+
+/* 添加食物的盒子样式 */
+.add_Food{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    display: none;
+}
+/* 因为添加 */
+.add_Food_box{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin: 100px auto;
+    display: grid;
+    padding: 40px;
+    align-items: center;
+    justify-items: center;
+}
+/* 设定添加食物里边的input样式 */
+.add_Food_box>input{
+    padding-left: 15px;
+    outline: none;
+    height: 50%;
+    width: 70%;
+}
+.Single_box_food{
+    width: 73%;
+    font-size: 17px;
+}
+.Single_box_food>select{
+    height: 30px;
+    width: 80%;
+}
+/* 设定确定取消按钮样式 */
+.add_Food_buttons{
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px 10px;
+}
+#add_Food_button_Determine{
+    border-radius: 3px;
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#add_food_button_Revise{
+    border-radius: 3px;
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#add_Food_button_Cancel{
+    border-radius: 3px;
+    color: #606266;
+    border: 1px solid #DCDFE6;
+    background-color: white;
+}
+/* 设定按钮鼠标移入样式 */
+#add_Food_button_Determine:hover{
+    opacity: 1;
+}
+#add_food_button_Revise:hover{
+    opacity: 1;
+}
+#add_Food_button_Cancel:hover{
+    background-color: #E8F4FF;
+    border:  1px solid #BADEFF;
+    color: #1890FF;
+}
+
+/* 文本框的内容是空时显示的样式 */
+.Check_if_the_value_is_empty{
+    border: 1px solid red;
+    color: red;
+}
+
+/* 设定订单搜索结果的样式 */
+.order_search_results>ul{
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 1fr;
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: .8;
+}
+/* 设定订单中心的添加按钮样式 */
+#order_add_button{
+    background-color: #1C84C6;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+.order_search_results>ul{
+    border-bottom: 3px solid #DCDFE6;
+}
+/* 设定修改删除按钮的样式 */
+.order_search_results>ul>li:nth-child(5){
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.order_search_results>ul>li:nth-child(5)>button{
+    border: none;
+    background-color: #FFFFFF;
+    color: #6FC6FF;
+}
+/* 设定鼠标移入样式 */
+.order_search_results>ul:hover{
+    background-color: #F5F7FA;
+}
+.order_search_results>ul:hover>li:nth-child(5)>button{
+    background-color: #F5F7FA;
+}
+.order_search_results>ul>li:nth-child(5)>button:hover{
+    color: red;
+}
+
+/* 设定添加修改订单得盒子样式 */
+.add_order{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    /* display: none; */
+}
+.add_Order_box{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin: 100px auto;
+    display: grid;
+    padding: 40px;
+    align-items: center;
+    justify-items: center;
+}
+.add_Order_box>input{
+    outline: none;
+    padding-left: 10px;
+    width: 68%;
+    height: 40%;
+}
+.Payment_status{
+    width: 70%;
+}
+.Payment_status>select{
+    height: 30px;
+    width: 80%;
+}
+/* 设定按钮 */
+.order_buttons{
+    display: grid;
+    width: 65%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px 10px;
+}
+#order_button_Determine{
+    border-radius: 3px;
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#order_button_Revise{
+    border-radius: 3px;
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#order_button_Cancel{
+    border-radius: 3px;
+    color: #606266;
+    border: 1px solid #DCDFE6;
+    background-color: white;
+}
+
+/* 设定显示新添加食物的盒子 */
+.food_add_results>ul{
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 1fr;
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: .8;
+    /* overflow: hidden; */
+}
+.food_add_results>ul>li{
+    border-bottom: 3px solid #DCDFE6;
+}
+/* 设置操作框里边的按钮样式 */
+.food_add_results>ul>li:nth-child(6){
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+/* 将显示id的框隐藏 */
+.food_add_results>ul>li:nth-child(7){
+    display: none;
+}
+.food_add_results>ul>li>button{
+    border: none;
+    background-color: #FFFFFF;
+    color: #46A6FF;
+}
+/* 设定鼠标移入样式 */
+.food_add_results>ul:hover{
+    /* li */
+    background-color: #F5F7FA;
+}
+.food_add_results>ul:hover>li:nth-child(6)>button{
+    background-color: #F5F7FA;
+}
+/* 设定新添加中心的按钮的鼠标移入样式 */
+.food_add_results>ul>li>button:hover{
+    color: red;
+}
+
+/* 用户中心样式 */
+.User_Center{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr;
+    padding: 20px;
+}
+/* 左侧信息栏样式 */
+.User_Information_Bar{
+    width: 80%;
+    height: 60%;
+    padding: 5px;
+    display: grid;
+    grid-template-rows: 30px auto;
+    background-color: #FFFFFF;
+    opacity: .8;
+}
+.User_Information_Bar>span{
+    padding-left: 10px;
+    background-color: #F0F3F4;
+    height: 30px;
+    line-height: 30px;
+}
+.message_window>div{
+    color: #676A6C;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 2px solid #E7EAEC;
+}
+#user_save_information{
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#User_save_information:hover{
+    opacity: 1;
+    background-color: red;
+}
+
+/* 右侧修改栏样式 */
+.User_Modify_information{
+    padding: 40px;
+    width: 40%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+    /* justify-items: center; */
+    opacity: .8;
+}
+.sex>select{
+    width: 86%;
+    height: 50%;
+}
+.User_Modify_information>input{
+    outline: none;
+    padding-left: 10px;
+    height: 50%;
+}
+/*  */
+
+
+/* 为搜索其他用户订单的结果的盒子设置样式 */
+.search_order_results>ul{
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 1fr;
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: .8;
+    /* overflow: hidden; */
+}
+.search_order_results>ul>li{
+    border-bottom: 3px solid #DCDFE6;
+}
+/* 设置操作框里边的按钮样式 */
+.search_order_results>ul>li:nth-child(6){
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+.search_order_results>ul>li>button{
+    border: none;
+    background-color: #FFFFFF;
+    color: #46A6FF;
+}
+/* 设定鼠标移入样式 */
+.search_order_results>ul:hover{
+    /* li */
+    background-color: #F5F7FA;
+}
+.search_order_results>ul:hover>li:nth-child(5)>button{
+    background-color: #F5F7FA;
+}
+/* 设定新添加中心的按钮的鼠标移入样式 */
+.search_order_results>ul>li>button:hover{
+    color: red;
+}
+/* 设定搜索其他用户中的修改的确定按钮 */
+#search_orthers_order_Determine{
+    border: none;
+    background-color: #1890FF;
+    color: white;
+}
+/*  */
+
+/* 分页查询(食物中心) */
+.number_of_pages{
+    margin-top: 10px;
+    width: 30%;
+    height: 50%;
+    margin-left: 20px;
+    display: grid;
+    grid-gap: 0 10px;
+    grid-template-columns: 1fr .5fr 1fr 1fr;
+}
+/* 设置按钮通有样式 */
+.number_of_pages>button{
+    border: none;
+    color: white;
+    background-color: #11669b;
+    opacity: .8;
+}
+.number_of_pages>button:hover{
+    opacity: 1;
+}
+#Food_number_of_pages{
+    border: 1px solid #DCDFE6;
+    background-color: white;
+    text-align: center;
+}
+#Food_number_of_pages_select>select{
+    height: 100%;
+    width: 100%;
+}
+/* 搜索其他用户样式 */
+#Order_number_of_pages{
+    border: 1px solid #DCDFE6;
+    background-color: white;
+    text-align: center;
+}
+
+
+
+
+
+
+/* 超级管理员样式 */
+.super_us{
+    display: grid;
+    grid-template-rows:3fr 40px;
+}
+.super_administrator>ul{
+    text-align: center;
+    background-color: #F8F8F9;
+    opacity: .8;
+    border-bottom: 3px solid #DCDFE6;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+.super_administrator>ul:nth-child(1){
+    margin-top: 60px;
+}
+/* 设定修改其他用户信息的样式 */
+.revise_us_All{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+.revise_us_All_box{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin: 100px auto;
+    display: grid;
+    padding: 40px;
+    align-items: center;
+    justify-items: center;
+}
+.revise_us_All_box>input{
+    outline: none;
+    padding-left: 10px;
+    width: 68%;
+    height: 40%;
+}
+.r_sex{
+    width: 70%;
+}
+.r_sex>select{
+    height: 30px;
+    width: 75%;
+}
+/* 设定按钮 */
+.r_buttons{
+    display: grid;
+    width: 65%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px 10px;
+}
+#r_Determine{
+    border-radius: 3px;
+    background-color: #46A6FF;
+    opacity: .8;
+    border: none;
+    color: white;
+}
+#r-Cancel{
+    border-radius: 3px;
+    color: #606266;
+    border: 1px solid #DCDFE6;
+    background-color: white;
+}
+#Super_number_of_pages{
+    border: 1px solid #DCDFE6;
+    background-color: white;
+    text-align: center;
+}
+.super_administrator>ul>li>button{
+    border: none;
+    background-color: #F8F8F9;
+    color: #46A6FF;
+}
+.super_administrator>ul:hover>li:nth-child(6)>button{
+    background-color: #F5F7FA;
+}
+
+.super_administrator>ul>li>button:hover{
+    /* 按钮 */
+    color: red;
+}
+/*  */
+@media screen and (max-width:1215px) {
+    .Centered{
+        grid-template-columns: 200px auto;
+    }
+    .top_operation_box>span{
+        display: none;
+    }
+    #exit_button{
+        grid-column: span 2;
+    }
+    
+}
